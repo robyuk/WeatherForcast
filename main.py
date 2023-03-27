@@ -40,8 +40,8 @@ if __name__ == '__main__':
 
         if dataview == 'Sky Conditions':  # then display weather icons
             icon_dir = 'http://openweathermap.org/img/w/'
-            icons = []
-            timestamps = []
+            icons = []  # List of urls to the icons
+            timestamps = []  # List of timestamps, captions for the icons
             for timestamp in chart_data.index:
                 icons.append(f'{icon_dir}{chart_data[dataview][timestamp]}.png')
                 timestamps.append(timestamp)
@@ -51,5 +51,7 @@ if __name__ == '__main__':
         else:  # Display the graph
             st.line_chart(data=chart_data, y=dataview, width=0, height=0)
 
+    else:  # Response was not OK, display the message
+        st.text(json_data['message'])
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/

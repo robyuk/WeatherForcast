@@ -7,7 +7,8 @@ import streamlit as st
 
 @st.cache_data
 def get_openweather(place):
-    """ Gets 5-day weather forecast data for a place from openweathermap.org"""
+    """ Gets 5-day weather forecast data for a place from openweathermap.org
+    Returns a JSON string with the data"""
     API_KEY = getenv('OPENWEATHER_API_KEY')
     url = f'http://api.openweathermap.org/data/2.5/forecast?q={place}&units=metric&appid={API_KEY}'
     return requests.get(url).json()
